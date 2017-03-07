@@ -1,7 +1,28 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @simonLouvet
+ Sign out
+ Unwatch 10
+  Star 0
+ Fork 0 imie-source/CDI-N-13-SHARE
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathCDI-N-13-SHARE/.gitignore
+245d516  on 20 Jan
+@simonLouvet simonLouvet restore .gitignore
+1 contributor
+RawBlameHistory     
+41 lines (30 sloc)  436 Bytes
 *.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+#java compile
+*.class
 
 # Package Files #
 *.jar
@@ -10,3 +31,30 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# temporary files
+*~
+
+# build and IDE specific files and directories 
+.project
+.settings
+.classpath
+.externalToolBuilders/
+.tern*
+build/
+build/*
+build
+bin/
+bin
+
+
+#merge conflict
+*.orig
+
+# gradle
+.gradle/
+.gradle
+.gradle/*
+
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
