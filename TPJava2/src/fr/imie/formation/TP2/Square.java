@@ -3,26 +3,29 @@
  */
 package fr.imie.formation.TP2;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author imiedev
  *
  */
 public class Square extends Rectangle {
 
-	/**
-	 * 
-	 */
-	public Square() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	/**
 	 * @param width
 	 * @param height
 	 */
-	public Square(Float side) {
-		super(side, side);
-		// TODO Auto-generated constructor stub
+	@Override
+	public void initialise(Float[] params) {
+		Float[] rectangleParams = {params[0], params[0]};
+		super.initialise(rectangleParams);
+	}
+	
+	static public String[] getBuildParams(){
+		String[] out = {"coté"};
+		return out;
 	}
 
 }

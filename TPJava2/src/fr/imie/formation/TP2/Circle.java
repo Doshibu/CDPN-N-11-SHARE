@@ -7,7 +7,7 @@ package fr.imie.formation.TP2;
  * @author imiedev
  *
  */
-public class Circle extends Shape {
+public class Circle implements Shape {
 
 	private Float radius;
 	
@@ -23,11 +23,15 @@ public class Circle extends Shape {
 	/**
 	 * @param radius
 	 */
-	public Circle(Float radius) {
-		super();
-		this.radius = radius;
+	@Override
+	public void initialise(Float[] params) {
+		this.radius = params[0];
 	}
-
+	
+	static public String[] getBuildParams(){
+		String[] out = {"rayon"};
+		return out;
+	}
 
 
 	/* (non-Javadoc)

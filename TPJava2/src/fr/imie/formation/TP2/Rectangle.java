@@ -7,31 +7,30 @@ package fr.imie.formation.TP2;
  * @author imiedev
  *
  */
-public class Rectangle extends Shape {
+public class Rectangle implements Shape {
 
 	private Float width;
 	private Float height;
-	
-	/**
-	 * 
-	 */
-	public Rectangle() {
-		super();
-	}
-	
 	
 
 	/**
 	 * @param width
 	 * @param height
 	 */
-	public Rectangle(Float width, Float height) {
-		super();
-		this.width = width;
-		this.height = height;
+	@Override
+	public void initialise(Float[] params) {
+		if (params[0]<0 || params[1]<0){
+			throw new IllegalArgumentException("la largeur et la longueur doit être supérieur à 0");
+		}
+		
+		this.width = params[0];
+		this.height = params[1];
 	}
 
-
+	static public String[] getBuildParams(){
+		String[] out = {"largeur","hauteur"};
+		return out;
+	}
 
 	/* (non-Javadoc)
 	 * @see fr.imie.formation.TP2.Shape#area()

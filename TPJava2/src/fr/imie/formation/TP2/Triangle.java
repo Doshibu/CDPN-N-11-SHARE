@@ -7,7 +7,7 @@ package fr.imie.formation.TP2;
  * @author imiedev
  *
  */
-public class Triangle extends Shape {
+public class Triangle implements Shape {
 
 	private Float side1;
 	private Float side2;
@@ -25,13 +25,22 @@ public class Triangle extends Shape {
 	 * @param side2
 	 * @param side3
 	 */
-	public Triangle(Float side1, Float side2, Float side3) {
-		super();
-		this.side1 = side1;
-		this.side2 = side2;
-		this.side3 = side3;
+	@Override
+	public void initialise(Float[] params) {
+		if (params[0]>params[1]+params[2] || params[1]>params[0]+params[2] || params[2]> params[0]+params[1]){
+			throw new IllegalArgumentException("un côté de triangeme nde peut êter supérieur à la somme des deux autres");
+		}
+		
+		this.side1 = params[0];
+		this.side2 = params[1];
+		this.side3 = params[2];
 	}
 
+	static public String[] getBuildParams(){
+		String[] out = {"coté1","coté2","coté3"};
+		return out;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 

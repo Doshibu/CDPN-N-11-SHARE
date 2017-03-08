@@ -7,7 +7,7 @@ package fr.imie.formation.TP2;
  * @author imiedev
  *
  */
-public class RegularPolygon extends Shape {
+public class RegularPolygon implements Shape {
 	
 	private Float radius;
 	private Integer sideNb;
@@ -27,13 +27,17 @@ public class RegularPolygon extends Shape {
 	 * @param sideNb
 	 * @param sideSize
 	 */
-	public RegularPolygon(Float radius, Integer sideNb) {
-		super();
-		this.radius = radius;
-		this.sideNb = sideNb;
+	@Override
+	public void initialise(Float[] params) {
+		this.radius = params[0];
+		this.sideNb = params[1].intValue();
 		this.sideSize = (float) (2*radius*Math.sin(Math.PI/sideNb));
 	}
-
+	
+	static public String[] getBuildParams(){
+		String[] out = {"rayon","nb de côté"};
+		return out;
+	}
 
 
 	/* (non-Javadoc)
@@ -41,7 +45,9 @@ public class RegularPolygon extends Shape {
 	 */
 	@Override
 	public Float area() {
-		Triangle triangle = new Triangle(this.radius,this.radius,this.sideSize);
+		Float[] paramsValues ={this.radius,this.radius,this.sideSize};
+		Triangle triangle = new Triangle();
+		triangle.initialise(paramsValues);
 		return this.sideNb*triangle.area();
 	}
 
