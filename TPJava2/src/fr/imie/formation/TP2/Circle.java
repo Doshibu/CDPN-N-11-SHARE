@@ -7,7 +7,7 @@ package fr.imie.formation.TP2;
  * @author imiedev
  *
  */
-public class Circle implements Shape {
+public class Circle extends Shape {
 
 	private Float radius;
 	

@@ -7,7 +7,7 @@ package fr.imie.formation.TP2;
  * @author imiedev
  *
  */
-public class Rectangle implements Shape {
+public class Rectangle extends Shape {
 
 	private Float width;
 	private Float height;

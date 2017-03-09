@@ -7,7 +7,7 @@ package fr.imie.formation.TP2;
  * @author imiedev
  *
  */
-public class Triangle implements Shape {
+public class Triangle extends Shape {
 
 	private Float side1;
 	private Float side2;

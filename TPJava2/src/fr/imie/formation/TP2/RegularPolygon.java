@@ -7,7 +7,7 @@ package fr.imie.formation.TP2;
  * @author imiedev
  *
  */
-public class RegularPolygon implements Shape {
+public class RegularPolygon extends Shape {
 	
 	private Float radius;
 	private Integer sideNb;

@@ -19,35 +19,10 @@ public class Display {
 	public Display() {
 	}
 
-	public void start() {
-		/*
-		 * List<Shape> shapes = new ArrayList<Shape>();
-		 * 
-		 * Rectangle rectangle = new Rectangle(10f,20f); shapes.add(rectangle);
-		 * prinatAreaOf(rectangle); printPerimeterOf(rectangle);
-		 * 
-		 * Circle circle = new Circle(10f); shapes.add(circle);
-		 * prinatAreaOf(circle); printPerimeterOf(circle);
-		 * 
-		 * Square square = new Square(10f); shapes.add(square);
-		 * prinatAreaOf(square); printPerimeterOf(square);
-		 * 
-		 * Triangle triangle = new Triangle(10f,10f,10f); shapes.add(triangle);
-		 * prinatAreaOf(triangle); printPerimeterOf(triangle);
-		 * 
-		 * RegularPolygon regularPolygon = new RegularPolygon(1f,1000f);
-		 * shapes.add(regularPolygon); prinatAreaOf(regularPolygon);
-		 * printPerimeterOf(regularPolygon);
-		 * 
-		 * try{ Rectangle badRectangle = new Rectangle(-1f,1f); }catch
-		 * (Exception e) { System.out.println(String.
-		 * format("exception lors de la création d'un objet: %s",e.getMessage())
-		 * ); }
-		 * 
-		 * this.diplaySumOfArea(shapes);
-		 */
+	public void start(AbstractFactory factory) {
 
 		Scanner scanner = new Scanner(System.in);
+
 
 		Shape myShape;
 		String[] params;
@@ -99,30 +74,9 @@ public class Display {
 					paramsValues[i] = Float.parseFloat(input);
 					i++;
 				}
-
-				switch (currentShapeDescriptor) {
-				case SQUARE:
-					myShape = new Square();
-					break;
-				case RECTANGLE:
-					myShape = new Rectangle();
-					break;
-				case CIRCLE:
-					myShape = new Circle();
-					break;
-				case REGULARPOLYGON:
-					myShape = new RegularPolygon();
-					break;
-				case TRIANGLE:
-					myShape = new Triangle();
-					break;
-
-				default:
-					break;
-				}
+				myShape= factory.buildShape(currentShapeDescriptor, paramsValues);	
 			}
 			if (myShape != null) {
-				myShape.initialise(paramsValues);
 				this.printAreaOf(myShape);
 				shapes.add(myShape);
 			}
@@ -143,11 +97,11 @@ public class Display {
 
 	private void printPerimeterOf(Shape shape) {
 		System.out.println(
-				String.format("le périmetre de %s est de %s", shape.getClass().getSimpleName(), shape.perimeter()));
+				String.format("le périmetre de %s de couleur %s est de %s", shape.getClass().getSimpleName(),shape.getColor(), shape.perimeter()));
 	}
 
 	private void printAreaOf(Shape shape) {
-		System.out.println(String.format("l'aire de %s est de %s", shape.getClass().getSimpleName(), shape.area()));
+		System.out.println(String.format("l'aire de %s de couleur %s est de %s", shape.getClass().getSimpleName(),shape.getColor(), shape.area()));
 	}
 
 }

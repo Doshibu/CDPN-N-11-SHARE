@@ -14,7 +14,7 @@ public class ShapeTest {
 	 */
 	public static void main(String[] args) {
 		Display display = new Display();
-		display.start();
+		display.start(ConcreteFactory2.getInstance());
 		
 		
 	}
