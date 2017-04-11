@@ -28,19 +28,27 @@ public class HelloWorldServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher requestDispatcher =  request.getRequestDispatcher("WEB-INF/helloWorld.jsp");
 		request.setAttribute("nameVue", request.getParameter("name"));
-		requestDispatcher.forward(request, response);
+		render(request, response);
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		// si aucune modification d'url necessaire
+		//request.setAttribute("nameVue", request.getParameter("nameInput"));
+		//render(request, response);
+		
+		//si une modificaiton d'url est necessaire
+		response.sendRedirect("HelloWorld?name=".concat(request.getParameter("nameInput")));
+	}
+	
+	private void render(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher requestDispatcher =  request.getRequestDispatcher("WEB-INF/helloWorld.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 }
