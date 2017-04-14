@@ -71,6 +71,14 @@ public class CrowdFundingEntity {
 		this.description = description;
 	}
 	
+	public Integer getCurrentFunding(){
+		Integer sum = 0;
+		for (DonEntity donation : dons) {
+			sum+=donation.getValue();
+		}
+		return sum;
+	}
+	
 	
 	
 	

@@ -36,13 +36,14 @@ body{
 	flex-basis: 80%;
 }
 
-.action{
+.navigation{
 	border-style: solid;
 	border-color : black;
 	background: green;
 	color: white;
 	padding : 10px;
 	margin : 5px;
+	width: 150px;
 }
 
 .header{
@@ -53,11 +54,12 @@ body{
 	flex-grow: 1;
 	display: flex;
 	flex-direction : row;
-	flex-wrap : wrap;
+	flex-wrap : nowrap;
 }
 
 .content{
 	flex-grow: 1;
+	overflow-y: scroll;
 	
 }
 

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.imie.CrowdFundingEntity;
+import fr.imie.ICrowdFundingService;
 import fr.imie.model.Project;
 import fr.imie.sesssionBean.IProjectsBean;
 
@@ -19,9 +21,10 @@ import fr.imie.sesssionBean.IProjectsBean;
 @WebServlet("/project")
 public class ProjectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	@Inject
-	IProjectsBean projectsBean;
+	ICrowdFundingService crowdFundingService;
+//	@Inject
+//	IProjectsBean projectsBean;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -37,8 +40,8 @@ public class ProjectServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Project currentProject = getProjectbyIdParam(request);
-		request.setAttribute("curentProjectPresentation", currentProject);
+
+		request.setAttribute("curentProjectPresentation",  getProjectbyIdParam(request));
 		request.getRequestDispatcher("WEB-INF/project.jsp").forward(request, response);
 
 	}
@@ -49,31 +52,25 @@ public class ProjectServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Project currentProject = getProjectbyIdParam(request);
+		CrowdFundingEntity currentProject = getProjectbyIdParam(request);
 		
 		if (request.getParameter("editionModeAction") != null) {
 			request.setAttribute("editionMode", true);
 		} else if (request.getParameter("saveAction") != null) {
 			String name = request.getParameter("nameInput");
 			currentProject.setName(name);
+			currentProject = crowdFundingService.saveCrowdfundingDTO(currentProject);
 			request.setAttribute("editionMode", false);
 		}
 		request.setAttribute("curentProjectPresentation", currentProject);
 		request.getRequestDispatcher("WEB-INF/project.jsp").forward(request, response);
 	}
 	
-	private Project getProjectbyIdParam(HttpServletRequest request) {
+	private CrowdFundingEntity getProjectbyIdParam(HttpServletRequest request) {
 		String idString = request.getParameter("id");
 		Integer id = Integer.parseInt(idString);
-		List<Project> projects = projectsBean.getProjects();
-		Project currentProject = null;
-		for (Project project : projects) {
-			if (project.getId() == id) {
-				currentProject = project;
-				break;
-			}
-		}
-		return currentProject;
+		return crowdFundingService.getByIdCrowdfundingDTO(id);
+
 	}
 	
 }

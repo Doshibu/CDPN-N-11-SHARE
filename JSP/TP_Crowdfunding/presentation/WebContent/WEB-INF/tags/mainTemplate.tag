@@ -16,9 +16,9 @@
 		</form>
 		</div>
 		<div class="middle">
-			<div class="menu" style="flex-basis: 10%;">
-				<a href="projectList?mode=current"><div class="action">projet en cours</div></a>
-				<a href="projectList?mode=funded"><div class="action">projets financés</div></a>
+			<div class="menu" style="flex-basis: 180px;">
+				<a href="projectList?mode=current"><div class="navigation">projet en cours</div></a>
+				<a href="projectList?mode=funded"><div class="navigation">projets financés</div></a>
 			</div>
 			<div class="content">
 				<jsp:doBody />

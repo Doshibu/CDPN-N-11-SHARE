@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.imie.ICrowdFundingService;
 import fr.imie.sesssionBean.IProjectsBean;
 
 /**
@@ -18,8 +19,10 @@ import fr.imie.sesssionBean.IProjectsBean;
 public class ProjectListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+//	@Inject
+//	IProjectsBean projectsBean;
 	@Inject
-	IProjectsBean projectsBean;
+	ICrowdFundingService crowdFundingService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,7 +37,7 @@ public class ProjectListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("projectListPresentation", projectsBean.getProjects());
+		request.setAttribute("projectListPresentation", crowdFundingService.getAllCrowdFunfingDTO());
 		request.getRequestDispatcher("WEB-INF/projectList.jsp").forward(request, response);
 	}
 
