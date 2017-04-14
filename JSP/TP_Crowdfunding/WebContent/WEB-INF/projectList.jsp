@@ -3,14 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link href="css/main.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Project List</title>
-</head>
-<body>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<t:mainTemplate>
 	<div class="container">
 		<c:forEach items="${projectListPresentation}" var="project">
 			<c:url value="project" var="url">
@@ -38,5 +32,4 @@
 			</a>
 		</c:forEach>
 	</div>
-</body>
-</html>
+</t:mainTemplate>
