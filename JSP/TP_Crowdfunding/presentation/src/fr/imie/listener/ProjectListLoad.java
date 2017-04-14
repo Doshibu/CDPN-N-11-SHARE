@@ -56,8 +56,8 @@ public class ProjectListLoad implements HttpSessionListener {
 		project3.setName("myThirdProject");
 		project3.addDonation(15000);
 		loadedProject.add(project3);
-		
-		sessionEvent.getSession().setAttribute("projectList", loadedProject);
+		// No need this listener because sessionScoped Injection provides same use
+		//sessionEvent.getSession().setAttribute("projectList", loadedProject);
 	}
 
 	/**

@@ -3,6 +3,7 @@ package fr.imie.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.imie.model.Project;
+import fr.imie.sesssionBean.IProjectsBean;
 
 /**
  * Servlet implementation class ProjectServlet
@@ -18,6 +20,9 @@ import fr.imie.model.Project;
 public class ProjectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Inject
+	IProjectsBean projectsBean;
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -60,7 +65,7 @@ public class ProjectServlet extends HttpServlet {
 	private Project getProjectbyIdParam(HttpServletRequest request) {
 		String idString = request.getParameter("id");
 		Integer id = Integer.parseInt(idString);
-		List<Project> projects = (List<Project>) request.getSession().getAttribute("projectList");
+		List<Project> projects = projectsBean.getProjects();
 		Project currentProject = null;
 		for (Project project : projects) {
 			if (project.getId() == id) {
